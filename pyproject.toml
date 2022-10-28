@@ -23,8 +23,8 @@ dependencies = [
 dynamic = ["version"]
 
 [project.urls]
-Homepage = "https://github.com/tiangolo/fastapi"
-Documentation = "https://fastapi.tiangolo.com/"
+Homepage = "https://github.com/wogra-ag/dastab"
+Documentation = "https://wogra-ag.github.io/dastab"
 
 [project.optional-dependencies]
 test = [
