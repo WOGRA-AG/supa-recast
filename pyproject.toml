@@ -84,7 +84,7 @@ all = [
 ]
 
 [tool.hatch.version]
-path = "fastapi/__init__.py"
+path = "dastab/__init__.py"
 
 [tool.isort]
 profile = "black"
@@ -94,12 +94,12 @@ known_third_party = ["fastapi", "pydantic", "starlette"]
 strict = true
 
 [[tool.mypy.overrides]]
-module = "fastapi.concurrency"
+module = "dastab.concurrency"
 warn_unused_ignores = false
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
-module = "fastapi.tests.*"
+module = "dastab.tests.*"
 ignore_missing_imports = true
 check_untyped_defs = true
 
