@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "supa-recast"
-version = "0.1.0"
+version = "0.0.1"
 description = ""
 authors = ["Thomas Fraunholz <tf@wogra.com>"]
 readme = "README.md"
