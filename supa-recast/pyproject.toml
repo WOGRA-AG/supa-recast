@@ -1,9 +1,8 @@
 [tool.poetry]
 name = "supa-recast"
-version = "0.0.2"
-description = "Supa-Recast Python SDK"
-authors = ["WOGRA AG <info@wogra.com>"]
-license = "MIT"
+version = "0.1.0"
+description = ""
+authors = ["Thomas Fraunholz <tf@wogra.com>"]
 readme = "README.md"
 packages = [{include = "supa_recast"}]
 
