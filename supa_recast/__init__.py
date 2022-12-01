@@ -1,1 +1,1 @@
-from mymethod import my_method
+from .dummy import dummy_method
