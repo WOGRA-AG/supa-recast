@@ -8,6 +8,7 @@ packages = [{include = "supa_recast"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+pre-commit = "^2.20.0"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -64,4 +65,3 @@ exclude_lines = [
     "raise NotImplementedError",
     "if __name__ == .__main__.:"
 ]
-
