@@ -1,6 +1,6 @@
 # From: https://github.com/michael0liver/python-poetry-docker-example/blob/master/docker/Dockerfile
-#FROM gitlab-registry.wogra.com/developer/images/python:3.10.7-slim as python-base
-FROM python:3.9.10-slim AS python-base
+FROM gitlab-registry.wogra.com/developer/images/python:3.10.7-slim as python-base
+#FROM python:3.9.10-slim AS python-base
 
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
