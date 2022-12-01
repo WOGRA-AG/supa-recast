@@ -12,6 +12,8 @@ python = "^3.8"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2.0"
+black = "^22.10.0"
+isort = "^5.10.1"
 
 
 [tool.poetry.group.nvim.dependencies]
@@ -20,3 +22,45 @@ neovim = "^0.3.1"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+# https://github.com/psf/black
+line-length = 79
+target_version = ['py310']
+exclude = '''
+(
+  /(
+    \ .git
+    | .github
+    | \.pytest_cache
+    | htmlcov
+    | venv
+    | .venv
+  )/
+)
+'''
+
+[tool.isort]
+# https://github.com/timothycrosley/isort
+# https://github.com/timothycrosley/isort/wiki/isort-Settings
+line_length = 79
+indent = '    '
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+
+[tool.coverage]
+# https://github.com/nedbat/coveragepy
+
+[tool.coverage.run]
+source = ["supa_recast"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "# noqa",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:"
+]
+
