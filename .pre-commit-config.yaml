@@ -15,4 +15,4 @@ repos:
     hooks:
     -   id: isort
         name: isort (python)
-        args: [--config=./pyproject.toml]
+        args: [--settings-path pyproject.toml]
