@@ -3,7 +3,7 @@ stages:
 
 build-test-and-lint:
   stage: test
-  services:    
+  services:
     - name: docker:dind
       command: ["--tls=false"]
   tags:
@@ -38,4 +38,3 @@ build-test-and-lint:
     DOCKERFILE: 'Dockerfile'
     IMG_NAME: 'supa-recast'
     BUILD_CONTEXT: '.'
-

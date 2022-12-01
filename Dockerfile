@@ -63,4 +63,3 @@ CMD ["tail", "-f", "/dev/null"]
 FROM development AS test
 RUN coverage run --rcfile ./pyproject.toml -m pytest ./tests
 RUN coverage report -m --fail-under 95
-

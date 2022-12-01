@@ -1,2 +1,3 @@
 import pytest
-retcode = pytest.main(['-x', 'tests'])
+
+retcode = pytest.main(["-x", "tests"])
