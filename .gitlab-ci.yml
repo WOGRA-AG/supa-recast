@@ -11,12 +11,13 @@ variables:
 # https://pip.pypa.io/en/stable/reference/pip_install/#caching
 cache:
   paths:
-    - .cache/pip
+    - $CI_PROJECT_DIR/.cache
 
 before_script:
+    - python -m pip cache info
     - pip install poetry==1.2.0
     - poetry config virtualenvs.in-project true
-    - poetry config cache-dir .cache
+    - poetry config cache-dir $CI_PROJECT_DIR/.cache
     - poetry config virtualenvs.path .venv
     - poetry config --list
     - poetry install
