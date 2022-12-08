@@ -6,3 +6,9 @@ dist/
 
 # Tests
 .coverage
+
+# Mis
+.env
+.vimspector.json
+vimspector.py
+setup.sh
