@@ -3,6 +3,7 @@ __pycache__/
 
 # Distribution / packaging
 dist/
+.cache
 
 # Tests
 .coverage
