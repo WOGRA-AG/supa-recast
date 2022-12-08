@@ -61,5 +61,6 @@ CMD ["tail", "-f", "/dev/null"]
 
 # 'test' stage runs our unit tests with pytest and coverage.
 FROM development AS test
+RUN mypy -p supa_recast --check-untyped-defs
 RUN coverage run --rcfile ./pyproject.toml -m pytest ./tests
 RUN coverage report -m --fail-under 95
