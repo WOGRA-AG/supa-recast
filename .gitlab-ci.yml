@@ -19,6 +19,8 @@ before_script:
     - poetry config virtualenvs.path venv
     - poetry config cache-dir .cache
     - poetry install
+    - poetry config --list
+    - poetry env info --path
     - source venv/bin/activate
 
 build-test-and-lint:
