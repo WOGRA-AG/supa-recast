@@ -16,14 +16,14 @@ cache:
 before_script:
     - pip install poetry==1.2.0
     - poetry config virtualenvs.in-project true
+    - poetry install
+    - source venv/bin/activate
 
 build-test-and-lint:
   stage: test
   tags:
     - aime
   script:
-    - poetry install
-    - poetry shell
     - black --config ./pyproject.toml --check supa_recast tests
     - isort --settings-path ./pyproject.toml --check-only supa_recast tests
     - mypy -p supa_recast --check-untyped-defs
