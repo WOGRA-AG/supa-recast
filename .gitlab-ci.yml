@@ -1,40 +1,30 @@
 stages:
   - test
 
+image: python:3.8-slim
+# Change pip's cache directory to be inside the project directory since we can
+# only cache local items.
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+# Pip's cache doesn't store the python packages
+# https://pip.pypa.io/en/stable/reference/pip_install/#caching
+cache:
+  paths:
+    - .cache/pip
+
+before_script:
+    - pip install poetry==1.2.0
+    - poetry config virtualenvs.in-project true
+
 build-test-and-lint:
   stage: test
-  services:
-    - name: docker:dind
-      command: ["--tls=false"]
   tags:
     - aime
-  before_script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
-    - docker pull $CACHE_REGISTRY/$IMG_NAME:lint || true
-    - docker build
-      -f $DOCKERFILE
-      --target lint
-      --cache-from $CACHE_REGISTRY/$IMG_NAME:lint
-      --build-arg BUILDKIT_INLINE_CACHE=1
-      --tag $CI_REGISTRY_IMAGE/$IMG_NAME:lint
-      $BUILD_CONTEXT
-    - docker push $CI_REGISTRY_IMAGE/$IMG_NAME:lint
-    - docker pull $CACHE_REGISTRY/$IMG_NAME:test || true
-    - docker build
-      -f $DOCKERFILE
-      --target test
-      --cache-from $CACHE_REGISTRY/$IMG_NAME:test
-      --build-arg BUILDKIT_INLINE_CACHE=1
-      --tag $CI_REGISTRY_IMAGE/$IMG_NAME:test
-      $BUILD_CONTEXT
-    - docker push $CI_REGISTRY_IMAGE/$IMG_NAME:test
-  coverage: '/TOTAL.+ ([0-9]{1,3}%)/'
-  variables:
-    DOCKER_DRIVER: overlay2
-    DOCKER_BUILDKIT: 1
-    DOCKER_TLS_CERTDIR: ""
-    CACHE_REGISTRY: developer/wogra/recast-python-package
-    DOCKERFILE: 'Dockerfile'
-    IMG_NAME: 'supa-recast'
-    BUILD_CONTEXT: '.'
+    - poetry install
+    - black --config ./pyproject.toml --check supa_recast tests
+    - isort --settings-path ./pyproject.toml --check-only supa_recast tests
+    - mypy -p supa_recast --check-untyped-defs
+    - coverage run --rcfile ./pyproject.toml -m pytest ./tests
+    - coverage report -m --fail-under 95
