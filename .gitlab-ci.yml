@@ -5,7 +5,7 @@ image: python:3.8-slim
 # Change pip's cache directory to be inside the project directory since we can
 # only cache local items.
 variables:
-  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache"
 
 # Pip's cache doesn't store the python packages
 # https://pip.pypa.io/en/stable/reference/pip_install/#caching
@@ -16,10 +16,11 @@ cache:
 before_script:
     - pip install poetry==1.2.0
     - poetry config virtualenvs.in-project true
-    - poetry install
+    - poetry config cache-dir .cache
+    - poetry config virtualenvs.path .venv
     - poetry config --list
-    - poetry env info --path
-    - source venv/bin/activate
+    - poetry install
+    - source .venv/bin/activate
 
 build-test-and-lint:
   stage: test
