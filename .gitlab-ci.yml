@@ -17,7 +17,7 @@ before_script:
     - pip install poetry==1.2.0
     - poetry config virtualenvs.in-project true
     - poetry config virtualenvs.path venv
-    - poerty config cache-dir .cache
+    - poetry config cache-dir .cache
     - poetry install
     - source venv/bin/activate
 
