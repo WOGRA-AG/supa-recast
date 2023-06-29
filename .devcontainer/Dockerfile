@@ -1,4 +1,5 @@
 FROM python:3.8-bullseye 
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 ARG USER_NAME=user
 ARG USER_UID=1000
