@@ -1,0 +1,26 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+	"name": "Python 3",
+	"image": "python:3.8-bullseye",
+	"postCreateCommand": "pip install poetry && poetry config virtualenvs.create false --local && poetry install",
+	"remoteUser": "root",
+	"updateRemoteUserUID": true,
+	
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": { 
+				"python.linting.enabled": true,
+				"python.linting.pylintEnabled": true
+			},
+			
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance"
+			]
+		}
+	}
+}
