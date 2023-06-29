@@ -4,12 +4,9 @@
 	"name": "Python 3",
 	"build": {
 		"dockerfile": "Dockerfile",
-		"context": "..",
-		"args": { 
-			"USER_NAME": "user",
-			"USER_UID": "1000"
-		}
+		"context": ".."
 	},
+	"remoteUser": "user",
 	
 	"customizations": {
 		// Configure properties specific to VS Code.
