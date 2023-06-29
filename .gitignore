@@ -11,6 +11,6 @@ dist/
 # Mis
 .env
 .vimspector.json
-.poetry.toml
+poetry.toml
 vimspector.py
 nvim-setup.sh

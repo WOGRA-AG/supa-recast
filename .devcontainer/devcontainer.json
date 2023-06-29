@@ -2,10 +2,14 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
 	"name": "Python 3",
-	"image": "python:3.8-bullseye",
-	"postCreateCommand": "pip install poetry && poetry config virtualenvs.create false --local && poetry install",
-	"remoteUser": "root",
-	"updateRemoteUserUID": true,
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "..",
+		"args": { 
+			"USER_NAME": "user",
+			"USER_UID": "1000"
+		}
+	},
 	
 	"customizations": {
 		// Configure properties specific to VS Code.
