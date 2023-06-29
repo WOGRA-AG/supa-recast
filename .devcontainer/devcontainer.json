@@ -10,18 +10,18 @@
 	"remoteEnv": {
 		"PATH": "${containerEnv:PATH}:/home/user/.local/bin"
 	},
-	"postCreateCommand": "pip install poetry && poetry config virtualenvs.in-project true && poetry install",
-	
+	"postCreateCommand": "pip install poetry==1.2.0 && poetry config virtualenvs.in-project true && poetry install",
+
 	"customizations": {
 		// Configure properties specific to VS Code.
 		"vscode": {
 			// Set *default* container specific settings.json values on container create.
 			"settings": {
-				"python.defaultInterpreterPath": "/workspaces/recast-python-package/.venv/bin/python", 
+				"python.defaultInterpreterPath": "/workspaces/recast-python-package/.venv/bin/python",
 				"python.linting.enabled": true,
 				"python.linting.pylintEnabled": true
 			},
-			
+
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
 				"ms-python.python",
